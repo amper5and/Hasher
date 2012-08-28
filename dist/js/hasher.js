@@ -92,7 +92,8 @@ var hasher = (function(window){
     }
 
     function _registerChange(newHash, isReplace){
-        newHash = decodeURIComponent(newHash); //fix IE8 while offline
+        //newHash = decodeURIComponent(newHash); //fix IE8 while offline
+        newHash = newHash.replace('%3A','?'); //fix IE8 while offline // fix from rohk
         if(_hash !== newHash){
             var oldHash = _hash;
             _hash = newHash; //should come before event dispatch to make sure user can get proper value inside event handler
